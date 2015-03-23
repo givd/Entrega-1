@@ -74,7 +74,7 @@ Capsa3D Objecte::calculCapsa3D()
     }
     //Un cop hem trobat els punt maxims i mínims definim la caixa
     capsa.a= pmax.x-pmin.x;
-    capsa.h=pmax.y-pmin-y;
+    capsa.h=pmax.y-pmin.y;
     capsa.p=pmax.z-pmin.z;
     capsa.pmin=pmin;
 

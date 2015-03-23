@@ -5,21 +5,21 @@ conjuntBoles::conjuntBoles()
     int i, j, idx;
     float sq3;
 
-    texturePaths[0] = "://resources/Bola1.jpg";
-    texturePaths[1] = "://resources/Bola2.jpg";
-    texturePaths[2] = "://resources/Bola3.jpg";
-    texturePaths[3] = "://resources/Bola4.jpg";
-    texturePaths[4] = "://resources/Bola5.jpg";
-    texturePaths[5] = "://resources/Bola6.jpg";
-    texturePaths[6] = "://resources/Bola7.jpg";
-    texturePaths[7] = "://resources/Bola8.jpg";
-    texturePaths[8] = "://resources/Bola9.jpg";
-    texturePaths[9] = "://resources/Bola10.jpg";
-    texturePaths[10] = "://resources/Bola11.jpg";
-    texturePaths[11] = "://resources/Bola12.jpg";
-    texturePaths[12] = "://resources/Bola13.jpg";
-    texturePaths[13] = "://resources/Bola14.jpg";
-    texturePaths[14] = "://resources/Bola15.jpg";
+    texturePaths[0] = "/resources/Bola1.jpg";
+    texturePaths[1] = "/resources/Bola2.jpg";
+    texturePaths[2] = "/resources/Bola3.jpg";
+    texturePaths[3] = "/resources/Bola4.jpg";
+    texturePaths[4] = "/resources/Bola5.jpg";
+    texturePaths[5] = "/resources/Bola6.jpg";
+    texturePaths[6] = "/resources/Bola7.jpg";
+    texturePaths[7] = "/resources/Bola8.jpg";
+    texturePaths[8] = "/resources/Bola9.jpg";
+    texturePaths[9] = "/resources/Bola10.jpg";
+    texturePaths[10] = "/resources/Bola11.jpg";
+    texturePaths[11] = "/resources/Bola12.jpg";
+    texturePaths[12] = "/resources/Bola13.jpg";
+    texturePaths[13] = "/resources/Bola14.jpg";
+    texturePaths[14] = "/resources/Bola15.jpg";
 
     for (i=0; i<NUM_BOLES; i++){
         boles[i] = new Bola(texturePaths[i]);

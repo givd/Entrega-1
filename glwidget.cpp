@@ -17,9 +17,9 @@ GLWidget::GLWidget(QWidget *parent)
     yRot = 0;
     zRot = 0;
 
-    a = 2.0;
-    h = 2.0;
-    p = 2.0;
+    a = 20.0;
+    h = 20.0;
+    p = 20.0;
 
     clearColor = Qt::black;
     qtGreen = QColor::fromCmykF(0.40, 0.0, 1.0, 0.0);
@@ -149,7 +149,7 @@ void GLWidget::paintGL()
 
    // A modificar si cal girar tots els objectes
    //esc->taulaBillar->aplicaTGCentrat(transform);
-   esc->aplicaTGCentrat(transform);
+   esc->aplicaTG(transform);
    esc->draw();
 }
 
@@ -224,11 +224,15 @@ void GLWidget::adaptaObjecteTamanyWidget(Objecte *obj)
 {
     mat4 matScale = Scale(1/a,1/p,1/h);
     obj->aplicaTG(matScale);
+    point4 posicio = point4(0.0 , 0.5 , -0.6 , 1.0);
+    obj->aplicaTGCentrat(Translate(posicio));
 }
 
 void GLWidget::newObjecte(Objecte * obj)
 {
-    adaptaObjecteTamanyWidget(obj);
+    if(dynamic_cast<Bola*> (obj)){
+        adaptaObjecteTamanyWidget(obj);
+    }
     obj->toGPU(program);
     esc->addObjecte(obj);
 
@@ -245,6 +249,8 @@ void GLWidget::newPlaBase()
 
 void GLWidget::newObj(QString fichero)
 {
+    std::cout<<fichero.toStdString()<<std::endl;
+    std::cout<<"hola"<<std::endl;
     // Metode que carrega un fitxer .obj llegit de disc
     TaulaBillar *obj;
 
@@ -272,7 +278,8 @@ void GLWidget::newConjuntBoles()
            if (bola != NULL)
                this->adaptaObjecteTamanyWidget(bola);
        }
-
+       point4 position = point4(0,0,0.8,1.0);
+       cjt->aplicaTG(Translate(position));
        cjt->toGPU(program);
        esc->addBoles(cjt);
 
@@ -281,7 +288,8 @@ void GLWidget::newConjuntBoles()
 }
 void GLWidget::newSalaBillar()
 {
-    newObj("://resources/taula.obj");
+    QString q = "/home/rrodrica20.alumnes/Grafics/entrega-1/resources/taula.obj";
+    newObj(q);
     newPlaBase();
     newBola();
     newConjuntBoles();

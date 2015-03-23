@@ -114,6 +114,24 @@ void Objecte::aplicaTGPoints(mat4 m)
 void Objecte::aplicaTGCentrat(mat4 m)
 {
     // Metode a implementar
+    Capsa3D capsa = calculCapsa3D();
+    vec3 centre_capsa;
+    centre_capsa.x= capsa.pmin.x+capsa.a/2;
+    centre_capsa.y= capsa.pmin.y+capsa.h/2;
+    centre_capsa.z= capsa.pmin.z+capsa.p/2;
+    mat4 trans_origen;
+    trans_origen[0] = vec4(1,0,0,-centre_capsa.x);
+    trans_origen[1] = vec4(0,1,0,-centre_capsa.y);
+    trans_origen[2] = vec4(0,0,1,-centre_capsa.z);
+    trans_origen[3] = vec4(0,0,0,1);
+    aplicaTG(trans_origen);
+    aplicaTG(m);
+    trans_origen[0] = vec4(1,0,0,centre_capsa.x);
+    trans_origen[1] = vec4(0,1,0,centre_capsa.y);
+    trans_origen[2] = vec4(0,0,1,centre_capsa.z);
+    trans_origen[3] = vec4(0,0,0,1);
+    aplicaTG(trans_origen);
+
 }
 
 void Objecte::toGPU(QGLShaderProgram *pr){

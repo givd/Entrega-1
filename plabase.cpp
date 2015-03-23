@@ -7,10 +7,10 @@ PlaBase::PlaBase(): Objecte(NumVerticesF)
     xorig = 0; yorig = 0; zorig = 0;
 
     // Vertices of a unit cube centered at origin, sides aligned with axes
-    vertex[0] = point4( 0.5, 0.5,  0, 1.0 );
-    vertex[1] = point4( 0.5, -0.5,  0, 1.0 );
-    vertex[2] = point4( -0.5, -0.5, 0, 1.0 );
-    vertex[3] = point4( -0.5, 0.5, 0, 1.0 );
+    vertex[0] = point4( 1.5, 0.5,  0, 1.0 );
+    vertex[1] = point4( 1.5, -0.5,  0, 1.0 );
+    vertex[2] = point4( 0.5, -0.5, 0, 1.0 );
+    vertex[3] = point4( 0.5, 0.5, 0, 1.0 );
 
     color = point4( 255.0, 255.0, 255.0, 1.0 );
 }

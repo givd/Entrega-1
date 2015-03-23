@@ -151,6 +151,9 @@ void GLWidget::paintGL()
    //esc->taulaBillar->aplicaTGCentrat(transform);
    esc->aplicaTG(transform);
    esc->draw();
+   xRot = 0;
+   yRot = 0;
+   zRot = 0;
 }
 
 
@@ -181,12 +184,12 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
     int dy = event->y() - lastPos.y();
 
     if (event->buttons() & Qt::LeftButton) {
-        setXRotation(xRot + 0.1 * dy);
-        setYRotation(yRot + 0.1 * dx);
+        setXRotation(xRot + 8 * dy);
+        setYRotation(yRot + 8 * dx);
 
     } else if (event->buttons() & Qt::RightButton) {
-        setXRotation(xRot + 1 * dy);
-        setZRotation(zRot + 1 * dx);
+        setXRotation(xRot + 8 * dy);
+        setZRotation(zRot + 8 * dx);
     }
     lastPos = event->pos();
 }
@@ -198,16 +201,32 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
     switch ( event->key() )
     {
     case Qt::Key_Up:
-
+        if(esc->bolaBlanca!=NULL){
+            point4 posicio = point4(0,0,0.01,1.0);
+            esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
+            updateGL();
+        }
         break;
     case Qt::Key_Down:
-
+        if(esc->bolaBlanca!=NULL){
+            point4 posicio = point4(0,0,-0.01,1.0);
+            esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
+            updateGL();
+        }
         break;
     case Qt::Key_Left:
-
+        if(esc->bolaBlanca!=NULL){
+            point4 posicio = point4(-0.01,0,0,1.0);
+            esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
+            updateGL();
+        }
         break;
     case Qt::Key_Right:
-
+        if(esc->bolaBlanca!=NULL){
+            point4 posicio = point4(0.01,0,0,1.0);
+            esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
+            updateGL();
+        }
         break;
     }
 }
@@ -250,7 +269,6 @@ void GLWidget::newPlaBase()
 void GLWidget::newObj(QString fichero)
 {
     std::cout<<fichero.toStdString()<<std::endl;
-    std::cout<<"hola"<<std::endl;
     // Metode que carrega un fitxer .obj llegit de disc
     TaulaBillar *obj;
 
@@ -288,7 +306,7 @@ void GLWidget::newConjuntBoles()
 }
 void GLWidget::newSalaBillar()
 {
-    QString q = "/home/rrodrica20.alumnes/Grafics/entrega-1/resources/taula.obj";
+    QString q = "/home/rrodrica20.alumnes/entrega-1/resources/taula.obj";
     newObj(q);
     newPlaBase();
     newBola();

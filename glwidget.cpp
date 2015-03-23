@@ -185,11 +185,13 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
 
     if (event->buttons() & Qt::LeftButton) {
         setXRotation(xRot + 8 * dy);
-        setYRotation(yRot + 8 * dx);
+
 
     } else if (event->buttons() & Qt::RightButton) {
-        setXRotation(xRot + 8 * dy);
+        //setXRotation(xRot + 8 * dy);
         setZRotation(zRot + 8 * dx);
+    } else if (event->buttons() & Qt::MiddleButton) {
+        setYRotation(yRot + 8 * dx);
     }
     lastPos = event->pos();
 }
@@ -203,33 +205,46 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
     case Qt::Key_Up:
         if(esc->bolaBlanca!=NULL){
             point4 posicio = point4(0,0,0.01,1.0);
-            esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
+            if(checkposition()){
+                esc->bolaBlanca->aplicaTG/*Centrat*/(Translate(posicio));
+            }
             updateGL();
         }
         break;
     case Qt::Key_Down:
         if(esc->bolaBlanca!=NULL){
             point4 posicio = point4(0,0,-0.01,1.0);
-            esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
+            if(checkposition()){
+                esc->bolaBlanca->aplicaTG/*Centrat*/(Translate(posicio));
+            }
             updateGL();
         }
         break;
     case Qt::Key_Left:
         if(esc->bolaBlanca!=NULL){
             point4 posicio = point4(-0.01,0,0,1.0);
-            esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
+            if(checkposition()){
+                esc->bolaBlanca->aplicaTG/*Centrat*/(Translate(posicio));
+            }
             updateGL();
         }
         break;
     case Qt::Key_Right:
         if(esc->bolaBlanca!=NULL){
             point4 posicio = point4(0.01,0,0,1.0);
-            esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
+            if(checkposition()){
+                esc->bolaBlanca->aplicaTG/*Centrat*/(Translate(posicio));
+            }
             updateGL();
         }
         break;
     }
 }
+
+bool GLWidget::checkposition(){
+
+}
+
 
 void GLWidget::keyReleaseEvent(QKeyEvent *event)
 {

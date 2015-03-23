@@ -41,7 +41,42 @@ Capsa3D Objecte::calculCapsa3D()
     // Metode a implementar: calcula la capsa mínima contenidora d'un objecte
     int i;
     vec3    pmin, pmax;
+    //Inicialitzem el punts max i min de la caixa el "punt zero" de l'objecte
+    pmin.x = points[0].x;
+    pmin.y = points[0].y;
+    pmin.z = points[0].z;
+    pmax.x = points[0].x;
+    pmax.y = points[0].y;
+    pmax.z = points[0].z;
 
+    //Recorrem cada punt per trobar els maxims i els minims
+    for (int i = 1; i<Index;i++){
+        //Primers els màxims
+        if (points[i].x>pmax.x){
+            pmax.x = points[i].x;
+        }
+        if (points[i].y>pmax.y){
+            pmax.y = points[i].y;
+        }
+        if (points[i].z>pmax.z){
+            pmax.z = points[i].z;
+        }
+        //I després els mínims
+        if (points[i].x<pmin.x){
+            pmin.x = points[i].x;
+        }
+        if (points[i].y<pmin.y){
+            pmin.y = points[i].y;
+        }
+        if (points[i].z<pmin.z){
+            pmin.z = points[i].z;
+        }
+    }
+    //Un cop hem trobat els punt maxims i mínims definim la caixa
+    capsa.a= pmax.x-pmin.x;
+    capsa.h=pmax.y-pmin.y;
+    capsa.p=pmax.z-pmin.z;
+    capsa.pmin=pmin;
 
     return capsa;
 }
@@ -78,6 +113,24 @@ void Objecte::aplicaTGPoints(mat4 m)
 
 void Objecte::aplicaTGCentrat(mat4 m)
 {
+    // Metode a implementar
+    Capsa3D capsa = calculCapsa3D();
+    vec3 centre_capsa;
+    centre_capsa.x= capsa.pmin.x+capsa.a/2;
+    centre_capsa.y= capsa.pmin.y+capsa.h/2;
+    centre_capsa.z= capsa.pmin.z+capsa.p/2;
+    mat4 trans_origen;
+    trans_origen[0] = vec4(1,0,0,-centre_capsa.x);
+    trans_origen[1] = vec4(0,1,0,-centre_capsa.y);
+    trans_origen[2] = vec4(0,0,1,-centre_capsa.z);
+    trans_origen[3] = vec4(0,0,0,1);
+    aplicaTG(trans_origen);
+    aplicaTG(m);
+    trans_origen[0] = vec4(1,0,0,centre_capsa.x);
+    trans_origen[1] = vec4(0,1,0,centre_capsa.y);
+    trans_origen[2] = vec4(0,0,1,centre_capsa.z);
+    trans_origen[3] = vec4(0,0,0,1);
+    aplicaTG(trans_origen);
 
 }
 

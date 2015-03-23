@@ -17,9 +17,9 @@ GLWidget::GLWidget(QWidget *parent)
     yRot = 0;
     zRot = 0;
 
-    a = 20.0;
-    h = 20.0;
-    p = 20.0;
+    a = 2.0;
+    h = 2.0;
+    p = 2.0;
 
     clearColor = Qt::black;
     qtGreen = QColor::fromCmykF(0.40, 0.0, 1.0, 0.0);
@@ -149,7 +149,7 @@ void GLWidget::paintGL()
 
    // A modificar si cal girar tots els objectes
    //esc->taulaBillar->aplicaTGCentrat(transform);
-   esc->aplicaTG(transform);
+   esc->aplicaTGCentrat(transform);
    esc->draw();
 }
 

@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    setWindowTitle(tr("Billar Practica 1: GiVD 2014-2015"));
+    setWindowTitle(tr("Roger Rodriguez, Bru Mas"));
     resize(640, 640);
 
 

@@ -8,7 +8,7 @@ Bola::Bola(): Objecte(NumInitVertices)
     vertex[2] = point4(-0.816497, -0.471405, -0.333333, 1.0);
     vertex[3] = point4( 0.816497, -0.471405, -0.333333, 1.0);
 
-    color = color4( 255.0 , 255.0 , 255.0 , 1.0 );
+    color = color4( 1.0, 1.0, 50.0 , 0.0 );
 
 }
 

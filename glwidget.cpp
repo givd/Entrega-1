@@ -281,7 +281,10 @@ void GLWidget::newConjuntBoles()
 }
 void GLWidget::newSalaBillar()
 {
-    // Metode que construeix tota la sala de billar: taula, 15 boles i bola blanca
+    newObj("://resources/taula.obj");
+    newPlaBase();
+    newBola();
+    newConjuntBoles();
 }
 
 // Metode per iniciar la dinàmica del joc

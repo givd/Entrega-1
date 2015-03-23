@@ -21,9 +21,10 @@ conjuntBoles::conjuntBoles()
     texturePaths[13] = "://resources/Bola14.jpg";
     texturePaths[14] = "://resources/Bola15.jpg";
 
-    for (i=0; i<NUM_BOLES; i++)
+    for (i=0; i<NUM_BOLES; i++){
         boles[i] = new Bola(texturePaths[i]);
-
+        boles[i]->make();
+    }
     sq3 = sqrt(3.);
     idx = 0;
     for (i=0; i<5; i++){

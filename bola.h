@@ -24,9 +24,9 @@ private:
     color4 color;
     void triangle(const point4& a, const point4& b, const point4& c);
     point4 calculVectorUnitari(vec4 a);
-    void divideTriangle(point4& a , point4& b , point4& c, int n);
-    QOpenGLTexture *texture;
+    void divideTriangle(point4& a , point4& b , point4& c, int n);    
     QString texturePath;
+    void initTextura();
 
 };
 

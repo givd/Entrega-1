@@ -32,6 +32,7 @@ Objecte::~Objecte()
 {
     delete points;
     delete colors;
+    delete vertexTextura;
 }
 
 
@@ -139,10 +140,13 @@ void Objecte::toGPU(QGLShaderProgram *pr){
     program = pr;
 
     std::cout<<"Passo les dades de l'objecte a la GPU\n";
-
+    texture->bind(0);
     glGenBuffers( 1, &buffer );
     glBindBuffer( GL_ARRAY_BUFFER, buffer );
-    glBufferData( GL_ARRAY_BUFFER, sizeof(point4) * Index + sizeof(color4) * Index,
+    glBufferData( GL_ARRAY_BUFFER,
+                  sizeof(point4) * Index +
+                  sizeof(color4) * Index +
+                  sizeof(vec2) * Index,
                   NULL, GL_STATIC_DRAW );
     program->link();
 
@@ -160,10 +164,11 @@ void Objecte::draw()
     // per si han canviat les coordenades dels punts
     glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(point4) * Index, &points[0] );
     glBufferSubData( GL_ARRAY_BUFFER, sizeof(point4) * Index, sizeof(color4) * Index, &colors[0] );
-
+    glBufferSubData( GL_ARRAY_BUFFER, sizeof(point4)*Index + sizeof(color4)*Index , sizeof(vec2)*Index, &vertexTextura[0]);
     // Per a conservar el buffer
     int vertexLocation = program->attributeLocation("vPosition");
     int colorLocation = program->attributeLocation("vColor");
+    int coordTextureLocation = program->attributeLocation("vCoordTexture");
 
     program->enableAttributeArray(vertexLocation);
     program->setAttributeBuffer("vPosition", GL_FLOAT, 0, 4);
@@ -171,6 +176,13 @@ void Objecte::draw()
     program->enableAttributeArray(colorLocation);
     program->setAttributeBuffer("vColor", GL_FLOAT, sizeof(point4) * Index, 4);
 
+    program->enableAttributeArray(coordTextureLocation);
+    program->setAttributeArray("vCoordTexture", GL_FLOAT,sizeof(point4)*Index + sizeof(color4)*Index,2 );
+
+
+    program->bindAttributeLocation("vPosition", vertexLocation);
+    program->bindAttributeLocation("vColor", colorLocation);
+    program->bindAttributeLocation("vCoordTexture", coordTextureLocation);
 
     glPolygonMode(GL_FRONT_AND_BACK,
                   GL_LINE);

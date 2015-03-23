@@ -206,7 +206,7 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
         if(esc->bolaBlanca!=NULL){
             point4 posicio = point4(0,0,0.01,1.0);
             if(checkposition()){
-                esc->bolaBlanca->aplicaTG/*Centrat*/(Translate(posicio));
+                esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
             }
             updateGL();
         }
@@ -215,7 +215,7 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
         if(esc->bolaBlanca!=NULL){
             point4 posicio = point4(0,0,-0.01,1.0);
             if(checkposition()){
-                esc->bolaBlanca->aplicaTG/*Centrat*/(Translate(posicio));
+                esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
             }
             updateGL();
         }
@@ -224,7 +224,7 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
         if(esc->bolaBlanca!=NULL){
             point4 posicio = point4(-0.01,0,0,1.0);
             if(checkposition()){
-                esc->bolaBlanca->aplicaTG/*Centrat*/(Translate(posicio));
+                esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
             }
             updateGL();
         }
@@ -233,7 +233,7 @@ void GLWidget::keyPressEvent(QKeyEvent *event)
         if(esc->bolaBlanca!=NULL){
             point4 posicio = point4(0.01,0,0,1.0);
             if(checkposition()){
-                esc->bolaBlanca->aplicaTG/*Centrat*/(Translate(posicio));
+                esc->bolaBlanca->aplicaTGCentrat(Translate(posicio));
             }
             updateGL();
         }
@@ -321,7 +321,7 @@ void GLWidget::newConjuntBoles()
 }
 void GLWidget::newSalaBillar()
 {
-    QString q = "/home/rrodrica20.alumnes/entrega-1/resources/taula.obj";
+    QString q = "://resources/taula.obj";
     newObj(q);
     newPlaBase();
     newBola();

@@ -7,7 +7,7 @@
 
 #include <Common.h>
 #include <cara.h>
-
+#include <QOpenGLTexture>
 
 #include <QGLShaderProgram>
 
@@ -41,6 +41,8 @@ protected:
     int     numPoints;
     point4 *points;
     color4 *colors;
+    vec2 *vertexTextura;
+    QOpenGLTexture *texture;
     int Index; // index de control del numero de vertexs a posar a la GPU
 
 
@@ -78,7 +80,7 @@ public:
 
 private:
     void construeix_cara ( char **words, int nwords, Objecte*objActual, int vindexUlt);
-
+    void initTextura();
 };
 
 

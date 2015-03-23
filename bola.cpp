@@ -8,7 +8,8 @@ Bola::Bola(): Objecte(NumInitVertices)
     vertex[2] = point4(-0.816497, -0.471405, -0.333333, 1.0);
     vertex[3] = point4( 0.816497, -0.471405, -0.333333, 1.0);
 
-    color = color4( 1.0, 1.0, 50.0 , 0.0 );
+    color = color4( 255.0 , 255.0 , 255.0 , 1.0 );
+    this->texturePath = "://resources/Bola0.jpg";
 
 }
 
@@ -30,7 +31,17 @@ void Bola::make(){
     divideTriangle( vertex[3], vertex[2], vertex[1],0);
     divideTriangle( vertex[0], vertex[3], vertex[1],0);
     divideTriangle( vertex[0], vertex[2], vertex[3],0);
+    initTextura();
 
+}
+
+void Bola::initTextura(){
+    glActiveTexture(GL_TEXTURE0);
+    texture = new QOpenGLTexture(QImage(texturePath));
+    texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
+    texture->setMagnificationFilter(QOpenGLTexture::Linear);
+
+    texture->bind(0);
 }
 
 void Bola::triangle(const point4 &a, const point4 &b, const point4 &c)

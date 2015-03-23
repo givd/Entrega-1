@@ -13,6 +13,7 @@ PlaBase::PlaBase(): Objecte(NumVerticesF)
     vertex[3] = point4( -0.5, 0.5, 1.0, 1.0 );
 
     color = point4( 255.0, 255.0, 255.0, 1.0 );
+
 }
 
 void PlaBase::make()
@@ -25,6 +26,17 @@ void PlaBase::make()
     colors[3] = color; points[3] = vertex[0];
     colors[4] = color; points[4] = vertex[3];
     colors[5] = color; points[5] = vertex[2];
+
+    initTextura();
+}
+
+void PlaBase::initTextura(){
+    glActiveTexture(GL_TEXTURE0);
+    texture = new QOpenGLTexture(QImage("://resources/Fabric_Green_L.jpg"));
+    texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
+    texture->setMagnificationFilter(QOpenGLTexture::Linear);
+
+    texture->bind(0);
 }
 
 // Destructora

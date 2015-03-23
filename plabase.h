@@ -6,6 +6,8 @@
 #include <objecte.h>
 #include <stdio.h>
 #include <cara.h>
+#include <QOpenGLTexture>
+
 
 const int NumVerticesF = 6; // (1 face, 2 triangles per face, 3 vertex per triangle)
 
@@ -18,6 +20,7 @@ public:
 private:
     point4 vertex[4];
     color4 color;
+    void initTextura();
 };
 
 #endif // PLABASE_H

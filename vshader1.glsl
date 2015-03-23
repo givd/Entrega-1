@@ -11,7 +11,7 @@ IN vec4 vColor;
 IN vec2 vCoordTexture;
 
 OUT vec4 color;
-OUT v_texcoord;
+OUT vec2 v_texcoord;
 
 void main()
 {

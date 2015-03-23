@@ -20,7 +20,6 @@ public:
 private:
     point4 vertex[4];
     color4 color;
-    void initTextura();
 };
 
 #endif // PLABASE_H

@@ -26,7 +26,6 @@ private:
     point4 calculVectorUnitari(vec4 a);
     void divideTriangle(point4& a , point4& b , point4& c, int n);    
     QString texturePath;
-    void initTextura();
 
 };
 

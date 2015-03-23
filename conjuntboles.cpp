@@ -23,7 +23,7 @@ conjuntBoles::conjuntBoles()
 
     for (i=0; i<NUM_BOLES; i++){
         boles[i] = new Bola(texturePaths[i]);
-        boles[i]->make();
+        boles[i]-> make();
     }
     sq3 = sqrt(3.);
     idx = 0;

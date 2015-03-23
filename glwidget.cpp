@@ -56,6 +56,7 @@ GLWidget::InitShader(const char* vShaderFile, const char* fShaderFile)
 
     program->bindAttributeLocation("vPosition", PROGRAM_VERTEX_ATTRIBUTE);
     program->bindAttributeLocation("vColor", PROGRAM_COLOR_ATTRIBUTE);
+    //program->bindAttributeLocation("vCoordTexture",);
     // muntatge del shader en el pipeline gràfic per a ser usat
     program->link();
 
@@ -258,7 +259,7 @@ void GLWidget::adaptaObjecteTamanyWidget(Objecte *obj)
 {
     mat4 matScale = Scale(1/a,1/p,1/h);
     obj->aplicaTG(matScale);
-    point4 posicio = point4(0.0 , 0.5 , -0.6 , 1.0);
+    point4 posicio = point4(0.0 , 0.0 , -0.6 , 1.0);
     obj->aplicaTGCentrat(Translate(posicio));
 }
 
@@ -321,8 +322,8 @@ void GLWidget::newConjuntBoles()
 }
 void GLWidget::newSalaBillar()
 {
-    QString q = "://resources/taula.obj";
-    newObj(q);
+    //QString q = "://resources/taula.obj";
+    //newObj(q);
     newPlaBase();
     newBola();
     newConjuntBoles();

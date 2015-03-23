@@ -44,6 +44,7 @@ protected:
     vec2 *vertexTextura;
     QOpenGLTexture *texture;
     int Index; // index de control del numero de vertexs a posar a la GPU
+    void initTextura(QString route);
 
 
 public:
@@ -78,9 +79,9 @@ public:
     // Aplica una TG centrada en el punt central de la capsa de l'objecte a un objecte
     void aplicaTGCentrat(mat4 m);
 
+
 private:
-    void construeix_cara ( char **words, int nwords, Objecte*objActual, int vindexUlt);
-    void initTextura();
+    void construeix_cara ( char **words, int nwords, Objecte*objActual, int vindexUlt);    
 };
 
 
